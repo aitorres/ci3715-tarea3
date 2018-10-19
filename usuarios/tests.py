@@ -107,6 +107,21 @@ class TestSeguridad(unittest.TestCase):
 		self.assertFalse(self.seguridad.clave_tiene_longitud_correcta("clave"))
 		self.assertFalse(self.seguridad.clave_tiene_longitud_correcta("hola_estaes_una_clave_muy_larga"))
 
+	# Resultado de la primera ejecucion: las pruebas pasan porque la funcion se desempeña
+	# de la manera correcta
+
+
+	# Prueba 5. Caso interior. Verificacion de caracteres especiales. Se llama la funcion
+	# registrarUsuario con un correo electronico valido y claves que coinciden de igual longitud
+	# pero que incluyen simbolos especiales.
+	# El valor esperado es False, ya que solo se permiten numeros y letras en la clave.
+
+	def test_claves_caracteres_especiales(self):
+		self.assertFalse(self.seguridad.registrarUsuario("andresitorresm@gmail.com", "hola1234_", "hola1234_"))
+		self.assertFalse(self.seguridad.registrarUsuario("andresitorresm@gmail.com", "@m_g1.-_{", "@m_g1.-_{"))
+
+	# Resultado de la primera ejecucion: la prueba falla porque devuelve True, no se verifica
+	# que solo se permitan utilizar letras y numeros en las claves
 
 if __name__ == '__main__':
 	unittest.main()
