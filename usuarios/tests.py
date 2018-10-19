@@ -80,5 +80,18 @@ class TestSeguridad(unittest.TestCase):
 	# Resultado de la primera ejecucion: Las pruebas pasan, y se verifica que la
 	# funcion auxiliar claves_coinciden cumplen con su cometido
 
+
+	# Prueba 4. Caso interior. Verificacion de longitud. Se llama la funcion
+	# con un correo electronico valido y dos claves que coinciden pero
+	# que estan por debajo o por encima del tamano permitido. Los valores esperados
+	# en las dos pruebas a realizar son False y False.
+
+	def test_registrar_usuario_longitud_claves(self):
+		self.assertFalse(self.seguridad.registrarUsuario("andresitorresm@gmail.com", "m1", "m1"))
+		self.assertFalse(self.seguridad.registrarUsuario("andresitorresm@gmail.com", "mmmmmJJJJJ1111133333", "mmmmmJJJJJ1111133333"))
+
+	# Resultado de primera ejecucion: Falla porque las claves coinciden y eso es todo lo
+	# que se valida hasta este punto.
+
 if __name__ == '__main__':
 	unittest.main()
