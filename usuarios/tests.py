@@ -139,5 +139,20 @@ class TestSeguridad(unittest.TestCase):
 	# Resultado de la primera ejecucion: las pruebas pasan, por lo que la funcion
 	# verifica correctamente que solo se tengan simbolos del conjunto permitido
 
+	# Prueba 6. Se verifica que la clave debe contener ciertos patrones en las
+	# letras, a saber: al menos tres letras, de esas al menos una minuscula y una mayuscula.
+	# Se ejecuta la funcion con una clave que cumple con estos parametros y
+	# tres pares que no cumplen. El valor esperado es True para el primer caso y False para los
+	# otros tres. Esta prueba seria de interior y frontera.
+
+	def test_requerimientos_en_letras(self):
+		self.assertTrue(self.seguridad.registrarUsuario("andresitorresm@gmail.com", "aAama1234", "aAama1234"))
+		self.assertFalse(self.seguridad.registrarUsuario("14-11082@usb.ve", "aA123456", "aA123456"))
+		self.assertFalse(self.seguridad.registrarUsuario("mariagrimaldi@outlook.com", "aa11bb22", "aa11bb22"))
+		self.assertFalse(self.seguridad.registrarUsuario("amigo@correo.com", "12345678", "12345678"))
+
+	# Resultado de la primera ejecucion: La prueba falla porque todo retorna True, no se validan las
+	# condiciones de letras.
+
 if __name__ == '__main__':
 	unittest.main()
