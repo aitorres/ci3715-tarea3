@@ -321,13 +321,14 @@ class TestSeguridad(unittest.TestCase):
     ##### PRUEBA 1 CON PRUEBA 3 
     ##### EXACTAMENTE 1 DIGITO
     ##### EXACTAMENTE UNA LETRA MAYUSCULA
-    ##### EXACTAMENTE 3 LETRAS
+    ##### AL MENOS 3 LETRAS
 
     ##### PRUEBA 2 CON PRUEBA 3
     ##### EXACTAMENTE 1 DIGITO
     ##### EXACRAMENTE UNA LETRA MINUSCULA
     ##### EXACTAMENTE 3 LETRAS
 
+    ##### Con frontera 8 caracteres #####
     '''
     PRUEBA 13: Formato de contrasena
     Tipo: Esquina
@@ -376,6 +377,43 @@ class TestSeguridad(unittest.TestCase):
         self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "aNG0NNNN","aNG0NNNN"))
         self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "1pMJMJMJ","1pMJMJMJ"))
 
-     
+##### Con frontera 16 caracteres #####
+
+    ##### PRUEBA 4 CON PRUEBA 6 
+    ##### EXACTAMENTE 1 DIGITO
+    ##### EXACTAMENTE UNA LETRA MAYUSCULA
+    ##### AL MENOS 3 LETRAS
+
+    ##### PRUEBA 5 CON PRUEBA 6
+    ##### EXACTAMENTE 1 DIGITO
+    ##### EXACRAMENTE UNA LETRA MINUSCULA
+    ##### AL MENOS 3 LETRAS
+
+    '''
+    PRUEBA 15: Formato de contrasena
+    Tipo: Esquina
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que se registre el usuario de forma correcta con una contrasena
+    con:
+    Caracteristicas de contrasena:
+        1) Al menos 3 letras
+        2) Exactamente una letra mayuscula
+        3) Exactamente un digito 
+        4) Longitud de 16 caracteres
+    Caracteristicas de email:
+        1) email cumple con RFC 822
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+    def test_frontera_registrarUsuarioP15(self):
+        self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maa1aaaaaaaaaaaa","Maa1aaaaaaaaaaaa"))
+        self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1Anddddddddddddd","1Anddddddddddddd"))
+        self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myfffffffffffff","0Myfffffffffffff"))
+        self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "Ang0gggggggggggg","Ang0gggggggggggg"))
+        self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "1pPmjjjjjjjjjjjj","1pPmjjjjjjjjjjjj"))
+
+    
+    
+    
 if __name__ == '__main__':
 	unittest.main()
