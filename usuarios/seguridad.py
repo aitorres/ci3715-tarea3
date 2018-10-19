@@ -10,7 +10,7 @@ class Seguridad:
 		pass
 
 	def registrarUsuario(self, email, clave1, clave2):
-		return self.es_correo_valido(email)
+		return self.es_correo_valido(email) and self.claves_coinciden(clave1, clave2)
 
 	def es_correo_valido(self, email):
 		# El regex a continuacion interpreta el formato de correos
@@ -20,3 +20,6 @@ class Seguridad:
 		if re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", email):
 			return True
 		return False
+
+	def claves_coinciden(self, clave1, clave2):
+		return clave1 == clave2
