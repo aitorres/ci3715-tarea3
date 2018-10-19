@@ -236,6 +236,19 @@ class TestSeguridad(unittest.TestCase):
 		self.assertFalse(self.seguridad.ingresarUsuario("usuario.com", "mmM12345"))
 
 		# Resultado de la priemra ejecucion: la funcion falla porque siempre devuelve True.
+		# Resultado de la segunda ejecucion: la funcion retorna False y pasa la prueba.
+
+
+	# Prueba 11. Se llama la funcion ingresarUsuarios con un correo de usuario valido
+	# pero con contraseñas invalidas, esperando que la funcion falle al verificar
+	# la contraseña. El resutlado esperado es que retorne False. Es una prueba frontera.
+
+	def test_ingresar_clave_invalida(self):
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "amigo"))
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "233565465456"))
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "!!aAami1234"))
+
+	# Resultado de la primera ejecucion: La funcion falla porque solo verifica la validez del correo.
 
 if __name__ == '__main__':
 	unittest.main()
