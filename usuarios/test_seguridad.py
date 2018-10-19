@@ -345,7 +345,7 @@ class TestSeguridad(unittest.TestCase):
 
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
-    def test_frontera_registrarUsuarioP13(self):
+    def test_esquina_registrarUsuarioP13(self):
         self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maaaaaa8","Maaaaaa8"))
         self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1Anddddd","1Anddddd"))
         self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myfffff","0Myfffff"))
@@ -370,7 +370,7 @@ class TestSeguridad(unittest.TestCase):
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
 
-    def test_frontera_registrarUsuarioP14(self):
+    def test_esquina_registrarUsuarioP14(self):
         self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "mAA1AAAA","mAA1AAAA"))
         self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1aNDDDDD","1aNDDDDD"))
         self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0mYFFFFF","0mYFFFFF"))
@@ -405,7 +405,7 @@ class TestSeguridad(unittest.TestCase):
 
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
-    def test_frontera_registrarUsuarioP15(self):
+    def test_esquina_registrarUsuarioP15(self):
         self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maa1aaaaaaaaaaaa","Maa1aaaaaaaaaaaa"))
         self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1Anddddddddddddd","1Anddddddddddddd"))
         self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myfffffffffffff","0Myfffffffffffff"))
@@ -430,7 +430,7 @@ class TestSeguridad(unittest.TestCase):
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
 
-    def test_frontera_registrarUsuarioP16(self):
+    def test_esquina_registrarUsuarioP16(self):
         self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "mAA1AAAAAAAAAAAA","mAA1AAAAAAAAAAAA"))
         self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1aNDDDDDDDDDDDDD","1aNDDDDDDDDDDDDD"))
         self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0mYFFFFFFFFFFFFF","0mYFFFFFFFFFFFFF"))
@@ -467,7 +467,7 @@ class TestSeguridad(unittest.TestCase):
 
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
-    def test_frontera_registrarUsuarioP17(self):
+    def test_esquina_registrarUsuarioP17(self):
         self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maaaaa8","Maaaaa8"))
         self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "Andddd5","Andddd5"))
         self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "Myffff0","Myffff0"))
@@ -492,7 +492,7 @@ class TestSeguridad(unittest.TestCase):
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
 
-    def test_frontera_registrarUsuarioP18(self):
+    def test_malicia_registrarUsuarioP18(self):
         self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "mAA5AAA","mAA5AAA"))
         self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "aND5DDD","aND5DDD"))
         self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "mYF5FFF","mYF5FFF"))
@@ -528,7 +528,7 @@ class TestSeguridad(unittest.TestCase):
 
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
-    def test_frontera_registrarUsuarioP19(self):
+    def test_esquina_registrarUsuarioP19(self):
         self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maa1aaaaaaaaaaaaa","Maa1aaaaaaaaaaaaa"))
         self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "1Andddddddddddddd","1Andddddddddddddd"))
         self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myffffffffffffff","0Myffffffffffffff"))
@@ -553,11 +553,23 @@ class TestSeguridad(unittest.TestCase):
     Resultado de la prueba: el usuario se registra satisfactoriamente
     '''
 
-    def test_frontera_registrarUsuarioP20(self):
+    def test_esquina_frontera_registrarUsuarioP20(self):
         self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "mAA1AAAAAAAAAAAAA","mAA1AAAAAAAAAAAAA"))
         self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "1aNDDDDDDDDDDDDDD","1aNDDDDDDDDDDDDDD"))
         self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0mYFFFFFFFFFFFFFF","0mYFFFFFFFFFFFFFF"))
         self.assertFalse(self.seguridad.registrarUsuario("angProco@gmail.com", "1aNGJJJJJJJJJJJJJ","1aNGJJJJJJJJJJJJJ"))
+
+
+
+    ########################################### CASOS DE PRUEBA DE MALICIA ####################################
+
+
+    ########### PRUEBA 1 MALICIOSA: correo invalido ##############
+    ########### PROBAMOS FUNCION registrarUsuario  ##############
+
+
+
+
 
 if __name__ == '__main__':
 	unittest.main()
