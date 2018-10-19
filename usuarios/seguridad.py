@@ -34,7 +34,7 @@ class Seguridad:
 		return False
 
 	def ingresarUsuario(self, email, clave):
-		return self.es_correo_valido(email)
+		return self.es_correo_valido(email) and self.es_clave_valida(clave, clave)
 
 	def es_correo_valido(self, email):
 		# El regex a continuacion interpreta el formato de correos
