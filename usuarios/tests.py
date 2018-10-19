@@ -1,9 +1,9 @@
 # encoding=utf-8
 from django.test import TestCase
 
-# Se importa el modulo de PyUnit para realizar las 
+# Se importa el modulo de PyUnit para realizar las
 # pruebas unitarias
-import unittest 
+import unittest
 from seguridad import Seguridad
 
 ################# Test Driven Development ################
@@ -23,7 +23,7 @@ class TestSeguridad(unittest.TestCase):
 
 	def test_registrar_usuario_1(self):
 		self.assertTrue(self.seguridad.registrarUsuario("andresitorresm@gmail.com","mmM123MJ","mmM123MJ"))
-	
+
 	# Resultado de primera ejecucion: Falla porque la funcion no esta definida.
 	# Resultado posterior: Retorna True, la funcion fue definida para retornar el valor
 
@@ -172,12 +172,12 @@ class TestSeguridad(unittest.TestCase):
 	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
 	# funcion de verificacion de letras minimas esta correcta.
 
-	
+
 	# Prueba 7. Se ejecuta la funcion registrarUsuario con una clave que no
 	# tiene digitos, conociendo que las claves deben tener al menos un digito como
 	# condicion minima de validez. Se llama con dos casos de prueba, uno que cumple con
 	# tener al menos un digito y otro que no lo tiene pero que cumplen con el
-	# resto de criterios. La prueba seria de interior y de frontera. Se espera que 
+	# resto de criterios. La prueba seria de interior y de frontera. Se espera que
 	# los valores sean True, False.
 
 	def test_tiene_digitos_minimos(self):
@@ -198,7 +198,7 @@ class TestSeguridad(unittest.TestCase):
 		self.assertTrue(self.seguridad.clave_tiene_digitos_minimos("1"))
 		self.assertFalse(self.seguridad.clave_tiene_digitos_minimos("asdfgaewfaw"))
 		self.assertFalse(self.seguridad.clave_tiene_digitos_minimos("holaClave"))
-	
+
 	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
 	# funcion de verificacion de digitos minimos esta correcta.
 
@@ -214,6 +214,18 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: La prueba falla ya que no existe el diccionario,
 	# porque no hay flujo de almacenamiento de datos.
+
+
+	# Prueba 9. Se llama la funcion ingresarUsuarios con un correo de usuario y
+	# una clave registradas, para verificar que la funcion se ejecute correctamente.
+	# El caso esperado es que retorne True para hacer login. Al momento de escribir
+	# la prueba, la funcion no esta definida.
+
+	def test_ingresar_usuarios1(self):
+		self.assertTrue(self.seguridad.registrarUsuario("usuario@correo.com", "mmM12345", "mmM12345"))
+		self.assertTrue(self.seguridad.ingresarUsuario("usuario@correo.com", "mmM12345"))
+
+	# Resultado de la priemra ejecucion: la funcion falla porque no esta definida.
 
 if __name__ == '__main__':
 	unittest.main()
