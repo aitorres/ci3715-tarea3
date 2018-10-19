@@ -564,11 +564,27 @@ class TestSeguridad(unittest.TestCase):
     ########################################### CASOS DE PRUEBA DE MALICIA ####################################
 
 
-    ########### PRUEBA 1 MALICIOSA: correo invalido ##############
+    ########### PRUEBA MALICIOSA: correo invalido ##############
     ########### PROBAMOS FUNCION registrarUsuario  ##############
 
+    '''
+    PRUEBA 21: Formato de correo
+    Tipo: Frontera
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que el usuario que se registre use como correo alguno 
+    que cumpla el formato RFC 822. En este caso: Falta de ., com y @
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+    def test_malicia_registrarUsuarioP21(self):
+        self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail", "Maa15678","Maa15678"))
+        self.assertFalse(self.seguridad.registrarUsuario("andrescom", "1And5200","1And5200"))
+        self.assertFalse(self.seguridad.registrarUsuario("mariafeixgmail.com", "0Myf5430","0Myf5430"))
+        self.assertFalse(self.seguridad.registrarUsuario("angProco@gmailcom", "Ang00000","Ang00000"))
+        self.assertFalse(self.seguridad.registrarUsuario("josegp.com", "11Pmj111","11Pmj111"))
 
 
+    
 
 
 if __name__ == '__main__':
