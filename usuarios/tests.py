@@ -226,6 +226,7 @@ class TestSeguridad(unittest.TestCase):
 		self.assertTrue(self.seguridad.ingresarUsuario("usuario@correo.com", "mmM12345"))
 
 	# Resultado de la priemra ejecucion: la funcion falla porque no esta definida.
+	# El resultado de la siguien ejecucion: la prueba pasa porque la funcion esta definida y retorna True.
 
 if __name__ == '__main__':
 	unittest.main()

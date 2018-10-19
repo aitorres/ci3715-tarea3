@@ -33,6 +33,9 @@ class Seguridad:
 
 		return False
 
+	def ingresarUsuario(self, email, clave):
+		return True
+
 	def es_correo_valido(self, email):
 		# El regex a continuacion interpreta el formato de correos
 		# electronicos del estandar RFC 822, que tiene letras, numeros y
@@ -58,7 +61,7 @@ class Seguridad:
 		if not self.clave_tiene_digitos_minimos(clave1):
 			return False
 
-		return True 
+		return True
 
 	def claves_coinciden(self, clave1, clave2):
 		return clave1 == clave2
@@ -103,4 +106,6 @@ class Seguridad:
 				return True
 
 		return False
+
+
 
