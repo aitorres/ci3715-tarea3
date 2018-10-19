@@ -92,6 +92,21 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de primera ejecucion: Falla porque las claves coinciden y eso es todo lo
 	# que se valida hasta este punto.
+	# Resultado de siguiente ejecucion: Pasa, ya se valida la longitud de las
+	# claves.
+
+	# Prueba 4.5. Casos frontera. Se verifica el correcto funcionamiento de la
+	# funcion auxiliar tiene_longitud_correcta para conocer si la funcion labora
+	# de la manera correcta, con dos pares de contraseñas de longitud correcta,
+	# y dos pares de contraseñas de longitud incorrecta.
+	# Los resultados esperados son True, True y False, False
+
+	def test_longitud_correcta(self):
+		self.assertTrue(self.seguridad.clave_tiene_longitud_correcta("holaAmigo"))
+		self.assertTrue(self.seguridad.clave_tiene_longitud_correcta("hola12345687"))
+		self.assertFalse(self.seguridad.clave_tiene_longitud_correcta("clave"))
+		self.assertFalse(self.seguridad.clave_tiene_longitud_correcta("hola_estaes_una_clave_muy_larga"))
+
 
 if __name__ == '__main__':
 	unittest.main()
