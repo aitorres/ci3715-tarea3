@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Metaetiquetas -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sitio web de ejemplo para el login de Ingenieria de Software I">
+    <meta name="author" content="Maria Grimaldi y Andres Torres">
+
+    <title>Registro</title>
+
+    <!-- Archivos CSS   -->
+    <link href="{% static 'bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'login.css' %}" rel="stylesheet">
+  </head>
+
+  <!-- Contenido -->
+  <body class="text-center">
+
+    <!-- PARA MANEJAR LOS MENSAJES DE ERROR -->
+    <form class="form-signin">
+      <div class="text-center">
+            <img class="mb-4" src="{% static 'logo2.png' %}" alt="" width="300" height="200">
+      </div>
+
+      {% if messages %}
+      <div class="text-center">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+      </div>
+      {% endif %}
+      
+      <h1 class="h3 mb-3 font-weight-normal">¡Has cerrado sesión!</h1>
+      <p>Gracias por utilizar el sistema interno de la Universidad Simón Bolívar.</p>
+      <a href="/">Iniciar sesión</a>
+    </form>
+  </body>
+</html>
