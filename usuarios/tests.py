@@ -249,6 +249,19 @@ class TestSeguridad(unittest.TestCase):
 		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "!!aAami1234"))
 
 	# Resultado de la primera ejecucion: La funcion falla porque solo verifica la validez del correo.
+	# Resultado de la segunda ejecucion: La funcion retorna False en todos los casos
+	# porque ahora verifica la validez de la contraseña.
+
+
+	# Prueba 12. Se llama la funcion ingresarUsuario con un correo de usuario valido y
+	# una clave valida pero que no han sido registrados antes, esperando que la funcin
+	# falle el login. Es una prueba interior. El resultado esperado es que retorne False.
+
+	def test_ingresar_datos_correctos(self):
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "aaA123456"))
+
+	# El resulatdo de la primera ejecucion: La funcion falla poqrue solo verifica que los formatos
+	# de correo y contraseña sean correctos.
 
 if __name__ == '__main__':
 	unittest.main()
