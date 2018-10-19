@@ -19,6 +19,9 @@ class Seguridad:
 		self.mayusculas_minimas = 1
 		self.minusculas_minimas = 1
 
+		# Requisitos de digitos minimos en claves
+		self.digitos_minimos = 1
+
 	def registrarUsuario(self, email, clave1, clave2):
 		return self.es_correo_valido(email) and self.es_clave_valida(clave1, clave2)
 
@@ -42,6 +45,9 @@ class Seguridad:
 			return False
 
 		if not self.clave_tiene_letras_minimas(clave1):
+			return False
+
+		if not self.clave_tiene_digitos_minimos(clave1):
 			return False
 
 		return True 
@@ -74,6 +80,18 @@ class Seguridad:
 				mayusculas += 1
 
 			if letras >= self.letras_minimas and mayusculas >= self.mayusculas_minimas and minusculas >= self.minusculas_minimas:
+				return True
+
+		return False
+
+	def clave_tiene_digitos_minimos(self, clave):
+		digitos = 0
+
+		for caracter in clave:
+			if re.match(r"^[0-9]", caracter):
+				digitos += 1
+
+			if digitos >= self.digitos_minimos:
 				return True
 
 		return False
