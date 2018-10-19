@@ -6,3 +6,6 @@ class Seguridad:
 
 	def __init__(self):
 		pass
+
+	def registrarUsuario(self, email, clave1, clave2):
+		return True
