@@ -125,5 +125,19 @@ class TestSeguridad(unittest.TestCase):
 	# Resultado de la siguiente ejecucion: la prueba pasa porque ya verifica
 	# si la clave tiene simbolos permitidos
 
+	# Prueba 5.5. Verificacion de simbolos permitidos. Se llama la funcion
+	# clave_tiene_simbolos_permitidos con dos claves con simbolos validos y dos claves
+	# con simbolos invalidos para conocer si la funcion creada se comporta
+	# como deberia. Los resultados esperados son True, True, False, False.
+
+	def test_simbolos_especiales(self):
+		self.assertTrue(self.seguridad.clave_tiene_simbolos_permitidos("amigo"))
+		self.assertTrue(self.seguridad.clave_tiene_simbolos_permitidos("jfgnr1574"))
+		self.assertFalse(self.seguridad.clave_tiene_simbolos_permitidos("amigo-"))
+		self.assertFalse(self.seguridad.clave_tiene_simbolos_permitidos("4_$/#$%&1"))
+
+	# Resultado de la primera ejecucion: las pruebas pasan, por lo que la funcion
+	# verifica correctamente que solo se tengan simbolos del conjunto permitido
+
 if __name__ == '__main__':
 	unittest.main()
