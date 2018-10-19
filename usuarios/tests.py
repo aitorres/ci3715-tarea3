@@ -203,6 +203,17 @@ class TestSeguridad(unittest.TestCase):
 	# funcion de verificacion de digitos minimos esta correcta.
 
 
+	# Prueba 8. Se llama la funcion para verificar que, si se inserta correctamente un
+	# email y un par de claves validas, se guarda en el diccinario el reverso de la clave
+	# asociada al mail. Esta prueba es de interior. El resultado esperado es que
+	# se retorne el reverso de la clave al acceder al diccionario.
+
+	def test_guardar_datos(self):
+		self.assertTrue(self.seguridad.registrarUsuario("andresitorresm@gmail.com", "CLave1234", "CLave1234"))
+		self.assertEquals(self.seguridad.usuarios["andresitorresm@gmail.com"], "4321evaLC")
+
+	# Resultado de la primera ejecucion: La prueba falla ya que no existe el diccionario,
+	# porque no hay flujo de almacenamiento de datos.
 
 if __name__ == '__main__':
 	unittest.main()
