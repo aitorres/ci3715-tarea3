@@ -171,5 +171,21 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
 	# funcion de verificacion de letras minimas esta correcta.
+
+	
+	# Prueba 7. Se ejecuta la funcion registrarUsuario con una clave que no
+	# tiene digitos, conociendo que las claves deben tener al menos un digito como
+	# condicion minima de validez. Se llama con dos casos de prueba, uno que cumple con
+	# tener al menos un digito y otro que no lo tiene pero que cumplen con el
+	# resto de criterios. La prueba seria de interior y de frontera. Se espera que 
+	# los valores sean True, False.
+
+	def test_tiene_digitos_minimos(self):
+		self.assertTrue(self.seguridad.registrarUsuario("14-11085@usb.ve", "1amiGuito", "1amiGuito"))
+		self.assertFalse(self.seguridad.registrarUsuario("12354@correo.com", "amiGOami", "amiGOami"))
+
+	# Resultado de la primera ejecucion: La prueba se ejecuta y falla, ya que acepta todas las claves
+	# a pesar de que uan no tiene digitos.
+
 if __name__ == '__main__':
 	unittest.main()
