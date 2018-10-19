@@ -22,8 +22,16 @@ class Seguridad:
 		# Requisitos de digitos minimos en claves
 		self.digitos_minimos = 1
 
+		# Diccionario de usuarios
+		self.usuarios = dict()
+
 	def registrarUsuario(self, email, clave1, clave2):
-		return self.es_correo_valido(email) and self.es_clave_valida(clave1, clave2)
+		if self.es_correo_valido(email) and self.es_clave_valida(clave1, clave2):
+			# Hacemos reverse de la clave con metodos de string slicing
+			self.usuarios[email] = clave1[::-1]
+			return True
+
+		return False
 
 	def es_correo_valido(self, email):
 		# El regex a continuacion interpreta el formato de correos
