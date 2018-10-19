@@ -25,6 +25,18 @@ class TestSeguridad(unittest.TestCase):
 		self.assertTrue(self.seguridad.registrarUsuario("andresitorresm@gmail.com","mmM123MJ","mmM123MJ"))
 	
 	# Resultado de primera ejecucion: Falla porque la funcion no esta definida.
+	# Resultado posterior: Retorna True, la funcion fue definida para retornar el valor
+
+
+	# Prueba 2. Caso frontera. Se llama la funcion registrarUsuario con un
+	# correo electronico invalido, y dos claves validas e iguales.
+	# El valor esperado es que la funcion retorne False y no almacene nada.
+
+	def test_registrar_usuario_correo_invalido(self):
+		self.assertFalse(self.seguridad.registrarUsuario("andresitorresm", "mmM123MJ", "mmM123MJ"))
+
+	# Resultado de primera ejecucion: Falla porque retorna True y no False
+
 
 if __name__ == '__main__':
 	unittest.main()
