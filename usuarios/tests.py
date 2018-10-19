@@ -61,6 +61,24 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de primera ejecucion: Falla porque la funcion solo verifica si el correo
 	# es valido o no
+	# Resultado de la siguiente ejecucion: Pasa, porque ahora se verifica
+	# que ambas claves sean la misma
+
+	# Prueba 3.5. Casos frontera. Se llama a la funcion claves_coinciden con
+	# dos pares de claves que coinciden, un par que no coincide, y dos pares de claves que
+	# alternan una estar vacia y la otra no, para verificar que la funcion
+	# auxiliar programada es correcta.
+	# Los valores esperados son True, True, False, False, False.
+
+	def test_claves_coinciden(self):
+		self.assertTrue(self.seguridad.claves_coinciden("clave1", "clave1"))
+		self.assertTrue(self.seguridad.claves_coinciden("4m1g0LDC", "4m1g0LDC"))
+		self.assertFalse(self.seguridad.claves_coinciden("clave1", "clave2"))
+		self.assertFalse(self.seguridad.claves_coinciden("clave1", ""))
+		self.assertFalse(self.seguridad.claves_coinciden("", "clave2"))
+
+	# Resultado de la primera ejecucion: Las pruebas pasan, y se verifica que la
+	# funcion auxiliar claves_coinciden cumplen con su cometido
 
 if __name__ == '__main__':
 	unittest.main()
