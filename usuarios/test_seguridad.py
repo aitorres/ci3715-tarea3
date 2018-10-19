@@ -11,10 +11,10 @@ from seguridad import Seguridad
 class TestSeguridad(unittest.TestCase):
 
     def setUp(self):
-		self.seguridad = Seguridad()
-
-	def tearDown(self):
-		self.seguridad = None
+        self.seguridad = Seguridad()
+        
+    def tearDown(self):
+        self.seguridad = None
 
     
     '''
@@ -39,4 +39,8 @@ class TestSeguridad(unittest.TestCase):
         self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myf5430","0Myf5430"))
         self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "Ang00000","Ang00000"))
         self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "11Pmj111","11Pmj111"))
-        
+
+
+
+if __name__ == '__main__':
+	unittest.main()
