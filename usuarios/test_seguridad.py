@@ -163,5 +163,34 @@ class TestSeguridad(unittest.TestCase):
         self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "aNG0NGNGaaaaaaaa","aNG0NGNGaaaaaaaa"))
         self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "1MpMJMJMpppppppp","1MpMJMJMpppppppp"))
         
+######################### PARTICION 2: LOS USUARIOS No SE PUEDEN REGISTRAN error en formato de contrasena
+######################### TIPO DE PRUEBA: FRONTERA
+
+    # TAMANO DE CONTRASENA FRONTERA NO ACEPTADO 7 CARACTERES / 17 CARACTERES
+
+    '''
+    PRUEBA 7: Formato de contrasena
+    Tipo: Frontera
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que se registre el usuario de forma correcta con una contrasena
+    con:
+    Caracteristicas de contrasena:
+        1) Exactamente 3 letras
+        2) Exactamente 1 letra mayuscula
+        3) Nuemero de digitos 5 
+        4) Longitud de 8 caracteres
+    Caracteristicas de email:
+        1) email cumple con RFC 822
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+    def test_frontera_registrarUsuarioP7(self):
+        self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maa5678","Maa5678"))
+        self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "And5200","And5200"))
+        self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "Myf5430","Myf5430"))
+        self.assertFalse(self.seguridad.registrarUsuario("angProco@gmail.com", "Ang0000","An00000"))
+        self.assertFalse(self.seguridad.registrarUsuario("josegp@gmail.com", "1Mmj111","1Mmj111"))
+
+
 if __name__ == '__main__':
 	unittest.main()
