@@ -312,6 +312,45 @@ class TestSeguridad(unittest.TestCase):
         self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "AmmY1FFFfmmmmmmmm","AmmY1FFFfmmmmmmmm"))
         self.assertFalse(self.seguridad.registrarUsuario("angProco@gmail.com", "aNG0nNGNGaaaaaaaa","aNG0nNGNGaaaaaaaa"))
         self.assertFalse(self.seguridad.registrarUsuario("josegp@gmail.com", "1MpMJMJMppppppppp","1MpMJMJMppppppppp"))
-    
+
+
+    ################################# PRUEBAS DE ESQUINA
+    ########################## PARTICION 1: los usuarios se registran satisfactoriamente
+
+    # Tamano 8 y 16 caracteres y con tamano 7 y 17
+    ##### PRUEBA 1 CON PRUEBA 3 
+    ##### EXACTAMENTE 1 DIGITO
+    ##### EXACTAMENTE UNA LETRA MAYUSCULA
+    ##### EXACTAMENTE 3 LETRAS
+
+    ##### PRUEBA 2 CON PRUEBA 3
+    ##### EXACTAMENTE 1 DIGITO
+    ##### EXACRAMENTE UNA LETRA MINUSCULA
+    ##### EXACTAMENTE 3 LETRAS
+
+    '''
+    PRUEBA 13: Formato de contrasena
+    Tipo: Esquina
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que se registre el usuario de forma correcta con una contrasena
+    con:
+    Caracteristicas de contrasena:
+        1) Al menos 3 letras
+        2) Exactamente una letra mayuscula
+        3) Nuemero de digitos 1 
+        4) Longitud de 8 caracteres
+    Caracteristicas de email:
+        1) email cumple con RFC 822
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+    def test_frontera_registrarUsuarioP13(self):
+        self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maaaaaa8","Maaaaaa8"))
+        self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1Anddddd","1Anddddd"))
+        self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myfffff","0Myfffff"))
+        self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "Ang0gggg","Ang0gggg"))
+        self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "1pPmjjjj","1pPmjjjj"))
+
+     
 if __name__ == '__main__':
 	unittest.main()
