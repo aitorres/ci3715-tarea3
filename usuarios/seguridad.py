@@ -34,7 +34,18 @@ class Seguridad:
 		return False
 
 	def ingresarUsuario(self, email, clave):
-		return self.es_correo_valido(email) and self.es_clave_valida(clave, clave)
+		if not (self.es_correo_valido(email) and self.es_clave_valida(clave, clave)):
+			return False
+
+		return self.esta_en_diccionario(email, clave)
+
+	def esta_en_diccionario(self, email, clave):
+		clave_reversa = clave[::-1]
+
+		try:
+			return (self.usuarios[email] == clave_reversa)
+		except KeyError:
+			return False
 
 	def es_correo_valido(self, email):
 		# El regex a continuacion interpreta el formato de correos

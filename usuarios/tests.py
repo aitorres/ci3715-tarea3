@@ -262,6 +262,8 @@ class TestSeguridad(unittest.TestCase):
 
 	# El resulatdo de la primera ejecucion: La funcion falla poqrue solo verifica que los formatos
 	# de correo y contraseña sean correctos.
+	# El resultado de la siguien ejecucion: La prueba pasa poqrue ya se verifica si la clave
+	# esta en el diccionario
 
 if __name__ == '__main__':
 	unittest.main()
