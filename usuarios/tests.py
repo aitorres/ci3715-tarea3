@@ -153,6 +153,23 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: La prueba falla porque todo retorna True, no se validan las
 	# condiciones de letras.
+	# Resultado de la segunda ejecucion: La prueba pasa ya que se verifican las
+	# cantidades de letras segun lo establecido.
 
+	# Prueba 6.5. Verificacion de funcion de letras minimas. Se ejecutan pruebas
+	# varias para la funcion clave_tiene_letras_minimas, con tres casos de claves que
+	# tienen las letras validas y tres que no las tienen. Se espera como resultado
+	# True, True, True, False, False, False. Estas pruebas son de frontera.
+
+	def test_letras_minimas(self):
+		self.assertTrue(self.seguridad.clave_tiene_letras_minimas("aaB"))
+		self.assertTrue(self.seguridad.clave_tiene_letras_minimas("amiGote1234"))
+		self.assertTrue(self.seguridad.clave_tiene_letras_minimas("BBr"))
+		self.assertFalse(self.seguridad.clave_tiene_letras_minimas("aa"))
+		self.assertFalse(self.seguridad.clave_tiene_letras_minimas("a1234124"))
+		self.assertFalse(self.seguridad.clave_tiene_letras_minimas("Ax12581879"))
+
+	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
+	# funcion de verificacion de letras minimas esta correcta.
 if __name__ == '__main__':
 	unittest.main()
