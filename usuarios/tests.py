@@ -265,5 +265,21 @@ class TestSeguridad(unittest.TestCase):
 	# El resultado de la siguien ejecucion: La prueba pasa poqrue ya se verifica si la clave
 	# esta en el diccionario
 
+	# Prueba 12.5. Se verifica el funcionamiento de la funcion esta_en_diccionario
+	# que fue agregada de manera auxiliar para pasar la prueba 12. La prueba es de interior y
+	# de frontera. El resultado esperado, para los cuatro casos, son True, True, False
+
+	def test_esta_en_diccionario(self):
+		self.seguridad.usuarios['correo@usuario.com'] = "amigo"[::-1]
+		self.seguridad.usuarios['usuario@correo2.com'] = "aaAa1234"[::-1]
+
+		self.assertTrue(self.seguridad.esta_en_diccionario("correo@usuario.com", "amigo"))
+		self.assertTrue(self.seguridad.esta_en_diccionario("usuario@correo2.com", "aaAa1234"))
+		self.assertFalse(self.seguridad.esta_en_diccionario("correoinvalido@usuario.com", "asdf15858"))
+		self.assertFalse(self.seguridad.esta_en_diccionario("correo@usuario.com", "claveinvalida"))
+
+	# El resultado de la primera ejecucion es que las pruebas pasan asi que se verifica
+	# el funcionamiento de esta funcion auxiliar.
+
 if __name__ == '__main__':
 	unittest.main()
