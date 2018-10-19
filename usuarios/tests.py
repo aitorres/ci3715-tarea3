@@ -233,7 +233,6 @@ class TestSeguridad(unittest.TestCase):
 	# El resultado esperado es que retorne False. Es una prueba frontera.
 
 	def test_ingresar_correo_invalido(self):
-		self.assertTrue(self.seguridad.registrarUsuario("usuario.com", "mmM12345", "mmM12345"))
 		self.assertFalse(self.seguridad.ingresarUsuario("usuario.com", "mmM12345"))
 
 		# Resultado de la priemra ejecucion: la funcion falla porque siempre devuelve True.
