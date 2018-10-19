@@ -51,7 +51,16 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: La prueba pasa, se verifica que la funcion auxiliar es correcta
 
-	
+
+	# Prueba 3. Caso frontera. Se llama la funcion registrarUsuario con un correo electronico
+	# valido pero con dos claves que no coinciden. Se espera que la funcion
+	# retorne False ya que las claves no son la misma.
+
+	def test_registrar_usuario_claves_distintas(self):
+		self.assertFalse(self.seguridad.registrarUsuario("mariagrimaldi@gmail.com", "mmM123MK", "mmM132MJ"))
+
+	# Resultado de primera ejecucion: Falla porque la funcion solo verifica si el correo
+	# es valido o no
 
 if __name__ == '__main__':
 	unittest.main()
