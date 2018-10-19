@@ -413,6 +413,28 @@ class TestSeguridad(unittest.TestCase):
         self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "1pPmjjjjjjjjjjjj","1pPmjjjjjjjjjjjj"))
 
     
+    '''
+    PRUEBA 16: Formato de contrasena
+    Tipo: Esquina
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que se registre el usuario de forma correcta con una contrasena
+    con:
+    Caracteristicas de contrasena:
+        1) Al menos 3 letras
+        2) Exactamente una letra minuscula
+        3) Exactamente un digito 
+        4) Longitud de 16 caracteres
+    Caracteristicas de email:
+        1) email cumple con RFC 822
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+
+    def test_frontera_registrarUsuarioP16(self):
+        self.assertTrue(self.seguridad.registrarUsuario("mjgf@gmail.com", "mAA1AAAAAAAAAAAA","mAA1AAAAAAAAAAAA"))
+        self.assertTrue(self.seguridad.registrarUsuario("andres@gmail.com", "1aNDDDDDDDDDDDDD","1aNDDDDDDDDDDDDD"))
+        self.assertTrue(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0mYFFFFFFFFFFFFF","0mYFFFFFFFFFFFFF"))
+        self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "1aNGJJJJJJJJJJJJ","1aNGJJJJJJJJJJJJ"))
     
     
 if __name__ == '__main__':
