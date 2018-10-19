@@ -1,3 +1,7 @@
 from django.test import TestCase
 
-# Create your tests here.
+# Se importa el modulo de PyUnit para realizar las 
+# pruebas unitarias
+import unittest 
+from seguridad import Seguridad
+ 
