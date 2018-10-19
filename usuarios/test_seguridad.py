@@ -569,7 +569,7 @@ class TestSeguridad(unittest.TestCase):
 
     '''
     PRUEBA 21: Formato de correo
-    Tipo: Frontera
+    Tipo: Malicia
     Funcion a probar: registrarUsuario en seguridad.py
     Descripcion del caso: se pone a prueba que el usuario que se registre use como correo alguno 
     que cumpla el formato RFC 822. En este caso: Falta de ., com y @
@@ -584,7 +584,45 @@ class TestSeguridad(unittest.TestCase):
         self.assertFalse(self.seguridad.registrarUsuario("josegp.com", "11Pmj111","11Pmj111"))
 
 
+    '''
+    PRUEBA 22: Formato de correo
+    Tipo: Malicia
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que el usuario que se registre use como correo alguno 
+    que cumpla el formato RFC 822. En este caso: caracteres especiales no aceptados
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+    def test_malicia_registrarUsuarioP22(self):
+        self.assertFalse(self.seguridad.registrarUsuario("mjg##f@gmail.com", "Maa15678","Maa15678"))
+        self.assertFalse(self.seguridad.registrarUsuario("andr%%%es@gmail.com", "1And5200","1And5200"))
+        self.assertFalse(self.seguridad.registrarUsuario("mariafe^ix@gmail.com", "0Myf5430","0Myf5430"))
+        self.assertFalse(self.seguridad.registrarUsuario("angProco&&&@gmail.com", "Ang00000","Ang00000"))
+        self.assertFalse(self.seguridad.registrarUsuario("joseg$$$p@gmail.com", "11Pmj111","11Pmj111"))
+
+    '''
+    PRUEBA 23: Formato de contrasena
+    Tipo: Malicia
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que el usuario que se registre use una contrasena
+    aceptada por el mecanismo de seguridad. En este caso: caracteres especiales (que no son
+    aceptados)
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+    def test_malicia_registrarUsuarioP23(self):
+        self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "Maa$$15678","Maa$$15678"))
+        self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "1And5200###","1And5200###"))
+        self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0Myf5430&","0Myf5430&"))
+        self.assertFalse(self.seguridad.registrarUsuario("angProco@gmail.com", "Ang*00000","Ang*00000"))
+        self.assertFalse(self.seguridad.registrarUsuario("josegp@gmail.com", "11Pmj1!!11","11Pmj1!!11"))
+
+       
     
+    ########### PRUEBA MALICIOSA: clave de registro invalida ##############
+    ########### PROBAMOS FUNCION registrarUsuario  ##############
+
+
 
 
 if __name__ == '__main__':
