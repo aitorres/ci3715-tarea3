@@ -377,7 +377,7 @@ class TestSeguridad(unittest.TestCase):
         self.assertTrue(self.seguridad.registrarUsuario("angProco@gmail.com", "aNG0NNNN","aNG0NNNN"))
         self.assertTrue(self.seguridad.registrarUsuario("josegp@gmail.com", "1pMJMJMJ","1pMJMJMJ"))
 
-##### Con frontera 16 caracteres #####
+##### CON FRONTERA 16 CARACTERES. RESULTADO ESPERADO: el usuario se registra satisfactoriamente #####
 
     ##### PRUEBA 4 CON PRUEBA 6 
     ##### EXACTAMENTE 1 DIGITO
