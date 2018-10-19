@@ -125,7 +125,7 @@ class TestSeguridad(unittest.TestCase):
         1) Exactamente 3 letras
         2) Exactamente una letra minuscula
         3) Nuemero de digitos 13 
-        4) Longitud de 8 caracteres
+        4) Longitud de 16 caracteres
     Caracteristicas de email:
         1) email cumple con RFC 822
 
@@ -149,7 +149,7 @@ class TestSeguridad(unittest.TestCase):
         1) Numero de letras 15
         2) Exactamente un digito
         3) Numero de mayus/minus indeterminado 
-        4) Longitud de 8 caracteres
+        4) Longitud de 16 caracteres
     Caracteristicas de email:
         1) email cumple con RFC 822
 
@@ -264,6 +264,29 @@ class TestSeguridad(unittest.TestCase):
         self.assertFalse(self.seguridad.registrarUsuario("angProco@gmail.com", "Ang00000000000000","Ang00000000000000"))
         self.assertFalse(self.seguridad.registrarUsuario("josegp@gmail.com", "11Pmj111111111111","11Pmj111111111111"))
 
+    '''
+    PRUEBA 11: Formato de contrasena
+    Tipo: Frontera
+    Funcion a probar: registrarUsuario en seguridad.py
+    Descripcion del caso: se pone a prueba que se registre el usuario de forma correcta con una contrasena
+    con:
+    Caracteristicas de contrasena:
+        1) Exactamente 3 letras
+        2) Exactamente una letra minuscula
+        3) Nuemero de digitos 14 
+        4) Longitud de 17 caracteres
+    Caracteristicas de email:
+        1) email cumple con RFC 822
+
+    Resultado de la prueba: el usuario se registra satisfactoriamente
+    '''
+
+    def test_frontera_registrarUsuarioP11(self):
+        self.assertFalse(self.seguridad.registrarUsuario("mjgf@gmail.com", "mAA15678111111111","mAA15678111111111"))
+        self.assertFalse(self.seguridad.registrarUsuario("andres@gmail.com", "1aND5200000000000","1aND5200000000000"))
+        self.assertFalse(self.seguridad.registrarUsuario("mariafeix@gmail.com", "0mYF5430000000000","0mYF5430000000000"))
+        self.assertFalse(self.seguridad.registrarUsuario("angProco@gmail.com", "aNG00000000000000","aNG00000000000000"))
+        self.assertFalse(self.seguridad.registrarUsuario("josegp@gmail.com", "11pMJ111111111111","11pMJ111111111111"))
     
 if __name__ == '__main__':
 	unittest.main()
