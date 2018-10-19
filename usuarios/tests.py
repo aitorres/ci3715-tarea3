@@ -122,6 +122,8 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: la prueba falla porque devuelve True, no se verifica
 	# que solo se permitan utilizar letras y numeros en las claves
+	# Resultado de la siguiente ejecucion: la prueba pasa porque ya verifica
+	# si la clave tiene simbolos permitidos
 
 if __name__ == '__main__':
 	unittest.main()

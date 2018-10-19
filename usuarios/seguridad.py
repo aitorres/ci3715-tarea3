@@ -30,7 +30,10 @@ class Seguridad:
 		if not self.claves_coinciden(clave1, clave2):
 			return False
 
-		if not (self.clave_tiene_longitud_correcta(clave1) and self.clave_tiene_longitud_correcta(clave2)):
+		if not self.clave_tiene_longitud_correcta(clave1):
+			return False
+
+		if not self.clave_tiene_simbolos_permitidos(clave1):
 			return False
 
 		return True 
@@ -41,3 +44,10 @@ class Seguridad:
 	def clave_tiene_longitud_correcta(self, clave):
 		tamano_clave = len(clave)
 		return (self.longitud_minima <= tamano_clave) and (tamano_clave <= self.longitud_maxima)
+
+	def clave_tiene_simbolos_permitidos(self, clave):
+		# Solo se permiten letras mayusculas, minusculas
+		# y numeros
+		if re.match(r"^[a-zA-Z0-9]+$", clave):
+			return True
+		return False
