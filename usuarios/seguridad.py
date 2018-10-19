@@ -14,6 +14,11 @@ class Seguridad:
 		self.longitud_minima = 8
 		self.longitud_maxima = 16
 
+		# Requisitos de letras minimas en claves
+		self.letras_minimas = 3
+		self.mayusculas_minimas = 1
+		self.minusculas_minimas = 1
+
 	def registrarUsuario(self, email, clave1, clave2):
 		return self.es_correo_valido(email) and self.es_clave_valida(clave1, clave2)
 
@@ -36,6 +41,9 @@ class Seguridad:
 		if not self.clave_tiene_simbolos_permitidos(clave1):
 			return False
 
+		if not self.clave_tiene_letras_minimas(clave1):
+			return False
+
 		return True 
 
 	def claves_coinciden(self, clave1, clave2):
@@ -51,3 +59,22 @@ class Seguridad:
 		if re.match(r"^[a-zA-Z0-9]+$", clave):
 			return True
 		return False
+
+	def clave_tiene_letras_minimas(self, clave):
+		letras, mayusculas, minusculas = 0, 0, 0
+
+		for letra in clave:
+			if re.match(r"^[a-zA-Z]", letra):
+				letras +=1
+
+			if re.match(r"^[a-z]", letra):
+				minusculas += 1
+
+			if re.match(r"^[A-Z]", letra):
+				mayusculas += 1
+
+			if letras >= self.letras_minimas and mayusculas >= self.mayusculas_minimas and minusculas >= self.minusculas_minimas:
+				return True
+
+		return False
+
