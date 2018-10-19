@@ -186,6 +186,23 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: La prueba se ejecuta y falla, ya que acepta todas las claves
 	# a pesar de que uan no tiene digitos.
+	# Resultado de la siguiente ejecucion: la prueba pasa tras refactorizar la funcion.
+
+	# Prueba 7.5. Se realizan pruebas varias de frontera e interior para
+	# verificar la validez de la funcion auxilizar clave_tiene_digitos_minimos,
+	# con dos casos validos y dos invalidos. Se esperan como resultados True, True,
+	# False, False.
+
+	def test_digitos_minimos(self):
+		self.assertTrue(self.seguridad.clave_tiene_digitos_minimos("12asdf"))
+		self.assertTrue(self.seguridad.clave_tiene_digitos_minimos("1"))
+		self.assertFalse(self.seguridad.clave_tiene_digitos_minimos("asdfgaewfaw"))
+		self.assertFalse(self.seguridad.clave_tiene_digitos_minimos("holaClave"))
+	
+	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
+	# funcion de verificacion de digitos minimos esta correcta.
+
+
 
 if __name__ == '__main__':
 	unittest.main()
