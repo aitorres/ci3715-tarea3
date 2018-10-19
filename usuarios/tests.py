@@ -228,5 +228,15 @@ class TestSeguridad(unittest.TestCase):
 	# Resultado de la priemra ejecucion: la funcion falla porque no esta definida.
 	# El resultado de la siguien ejecucion: la prueba pasa porque la funcion esta definida y retorna True.
 
+	# Prueba 10. Se llama la funcion ingresarUsuarios con un correo de usuario invalido,
+	# esperando que la funcion falle al verificar si el correo es valido.
+	# El resultado esperado es que retorne False. Es una prueba frontera.
+
+	def test_ingresar_correo_invalido(self):
+		self.assertTrue(self.seguridad.registrarUsuario("usuario.com", "mmM12345", "mmM12345"))
+		self.assertFalse(self.seguridad.ingresarUsuario("usuario.com", "mmM12345"))
+
+		# Resultado de la priemra ejecucion: la funcion falla porque siempre devuelve True.
+
 if __name__ == '__main__':
 	unittest.main()
