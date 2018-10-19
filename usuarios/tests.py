@@ -1,9 +1,9 @@
 # encoding=utf-8
 from django.test import TestCase
 
-# Se importa el modulo de PyUnit para realizar las 
+# Se importa el modulo de PyUnit para realizar las
 # pruebas unitarias
-import unittest 
+import unittest
 from seguridad import Seguridad
 
 ################# Test Driven Development ################
@@ -23,7 +23,7 @@ class TestSeguridad(unittest.TestCase):
 
 	def test_registrar_usuario_1(self):
 		self.assertTrue(self.seguridad.registrarUsuario("andresitorresm@gmail.com","mmM123MJ","mmM123MJ"))
-	
+
 	# Resultado de primera ejecucion: Falla porque la funcion no esta definida.
 	# Resultado posterior: Retorna True, la funcion fue definida para retornar el valor
 
@@ -172,12 +172,12 @@ class TestSeguridad(unittest.TestCase):
 	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
 	# funcion de verificacion de letras minimas esta correcta.
 
-	
+
 	# Prueba 7. Se ejecuta la funcion registrarUsuario con una clave que no
 	# tiene digitos, conociendo que las claves deben tener al menos un digito como
 	# condicion minima de validez. Se llama con dos casos de prueba, uno que cumple con
 	# tener al menos un digito y otro que no lo tiene pero que cumplen con el
-	# resto de criterios. La prueba seria de interior y de frontera. Se espera que 
+	# resto de criterios. La prueba seria de interior y de frontera. Se espera que
 	# los valores sean True, False.
 
 	def test_tiene_digitos_minimos(self):
@@ -198,7 +198,7 @@ class TestSeguridad(unittest.TestCase):
 		self.assertTrue(self.seguridad.clave_tiene_digitos_minimos("1"))
 		self.assertFalse(self.seguridad.clave_tiene_digitos_minimos("asdfgaewfaw"))
 		self.assertFalse(self.seguridad.clave_tiene_digitos_minimos("holaClave"))
-	
+
 	# Resultado de la primera ejecucion: La prueba se ejecuta correctamente verificando que la
 	# funcion de verificacion de digitos minimos esta correcta.
 
@@ -214,6 +214,72 @@ class TestSeguridad(unittest.TestCase):
 
 	# Resultado de la primera ejecucion: La prueba falla ya que no existe el diccionario,
 	# porque no hay flujo de almacenamiento de datos.
+
+
+	# Prueba 9. Se llama la funcion ingresarUsuarios con un correo de usuario y
+	# una clave registradas, para verificar que la funcion se ejecute correctamente.
+	# El caso esperado es que retorne True para hacer login. Al momento de escribir
+	# la prueba, la funcion no esta definida.
+
+	def test_ingresar_usuarios1(self):
+		self.assertTrue(self.seguridad.registrarUsuario("usuario@correo.com", "mmM12345", "mmM12345"))
+		self.assertTrue(self.seguridad.ingresarUsuario("usuario@correo.com", "mmM12345"))
+
+	# Resultado de la priemra ejecucion: la funcion falla porque no esta definida.
+	# El resultado de la siguien ejecucion: la prueba pasa porque la funcion esta definida y retorna True.
+
+	# Prueba 10. Se llama la funcion ingresarUsuarios con un correo de usuario invalido,
+	# esperando que la funcion falle al verificar si el correo es valido.
+	# El resultado esperado es que retorne False. Es una prueba frontera.
+
+	def test_ingresar_correo_invalido(self):
+		self.assertFalse(self.seguridad.ingresarUsuario("usuario.com", "mmM12345"))
+
+		# Resultado de la priemra ejecucion: la funcion falla porque siempre devuelve True.
+		# Resultado de la segunda ejecucion: la funcion retorna False y pasa la prueba.
+
+
+	# Prueba 11. Se llama la funcion ingresarUsuarios con un correo de usuario valido
+	# pero con contraseñas invalidas, esperando que la funcion falle al verificar
+	# la contraseña. El resutlado esperado es que retorne False. Es una prueba frontera.
+
+	def test_ingresar_clave_invalida(self):
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "amigo"))
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "233565465456"))
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "!!aAami1234"))
+
+	# Resultado de la primera ejecucion: La funcion falla porque solo verifica la validez del correo.
+	# Resultado de la segunda ejecucion: La funcion retorna False en todos los casos
+	# porque ahora verifica la validez de la contraseña.
+
+
+	# Prueba 12. Se llama la funcion ingresarUsuario con un correo de usuario valido y
+	# una clave valida pero que no han sido registrados antes, esperando que la funcin
+	# falle el login. Es una prueba interior. El resultado esperado es que retorne False.
+
+	def test_ingresar_datos_correctos(self):
+		self.assertFalse(self.seguridad.ingresarUsuario("correo@usuario.com", "aaA123456"))
+
+	# El resulatdo de la primera ejecucion: La funcion falla poqrue solo verifica que los formatos
+	# de correo y contraseña sean correctos.
+	# El resultado de la siguien ejecucion: La prueba pasa poqrue ya se verifica si la clave
+	# esta en el diccionario
+
+	# Prueba 12.5. Se verifica el funcionamiento de la funcion esta_en_diccionario
+	# que fue agregada de manera auxiliar para pasar la prueba 12. La prueba es de interior y
+	# de frontera. El resultado esperado, para los cuatro casos, son True, True, False
+
+	def test_esta_en_diccionario(self):
+		self.seguridad.usuarios['correo@usuario.com'] = "amigo"[::-1]
+		self.seguridad.usuarios['usuario@correo2.com'] = "aaAa1234"[::-1]
+
+		self.assertTrue(self.seguridad.esta_en_diccionario("correo@usuario.com", "amigo"))
+		self.assertTrue(self.seguridad.esta_en_diccionario("usuario@correo2.com", "aaAa1234"))
+		self.assertFalse(self.seguridad.esta_en_diccionario("correoinvalido@usuario.com", "asdf15858"))
+		self.assertFalse(self.seguridad.esta_en_diccionario("correo@usuario.com", "claveinvalida"))
+
+	# El resultado de la primera ejecucion es que las pruebas pasan asi que se verifica
+	# el funcionamiento de esta funcion auxiliar.
 
 if __name__ == '__main__':
 	unittest.main()
